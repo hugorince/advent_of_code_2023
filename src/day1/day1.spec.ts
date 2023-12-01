@@ -7,7 +7,10 @@ import {
   joinFirstAndLastDigitOfArray,
   arrayOfDoubleDigits,
   calculateSum,
-} from "./day1_part1";
+  checkIfDigitsInLetters,
+  replaceDigitsInLetters,
+  turnArrayIntoDigitsWithoutLetters,
+} from "./day1";
 
 describe("day1", () => {
   it("should transform the text input into an array of string", () => {
@@ -15,6 +18,23 @@ describe("day1", () => {
     const array = turnIntoArray(input);
     expect(typeof array).toEqual("object");
     expect(typeof array[0]).toEqual("string");
+  });
+  it("should check if there is a digit in letter in the string", () => {
+    const string = "onesdf";
+    expect(checkIfDigitsInLetters(string)).toEqual(true);
+  });
+  it('should replace "one" by "1"', () => {
+    const string = "sevenpqrstsixteen";
+    expect(replaceDigitsInLetters(string)).toEqual("7pqrst6teen");
+  });
+  it("should replace 'oneight' by '18'", () => {
+    const string = "oneightsqdf";
+    expect(replaceDigitsInLetters(string)).toEqual("18sqdf");
+  });
+  it("should return an array of string without digits in letters", () => {
+    const array = ["onesdf", "twosdfthree", "3sdf"];
+    const result = ["1sdf", "2sdf3", "3sdf"];
+    expect(turnArrayIntoDigitsWithoutLetters(array)).toEqual(result);
   });
   it("should transform a string into an array of string", () => {
     const string = "abc3ef";
@@ -39,9 +59,7 @@ describe("day1", () => {
   });
   it("should return an array of string of only numbers", () => {
     const array = ["kjh&1jkh6", "1mskldfhjkkjh", "jkh15"];
-
     const finalArray = arrayOfDoubleDigits(array);
-
     expect(finalArray).toEqual(["16", "11", "15"]);
   });
   it("should return the sum of an array of string of only numbers", () => {

@@ -1,4 +1,11 @@
-import { cubesPossibility, gameWith3Colors, resultOfAllGames } from "./day2";
+import {
+  cubesPossibility,
+  gameWith3Colors,
+  resultOfAllGames,
+  lowestCubesPossibility,
+  gameMultiplicationOfLowestPossibilities,
+  resultOfLowestAllGames,
+} from "./day2";
 
 const mockGames = [
   {
@@ -30,7 +37,16 @@ describe("day2", () => {
   it("should return the gameNumber if 3 possibilities of colors", () => {
     expect(gameWith3Colors(mockGames[0])).toEqual(11);
   });
-  it("should do the operation for every games in the array", () => {
+  it("should do the operation for every games in the array and return the sum of the possibles gameNumbers", () => {
     expect(resultOfAllGames(mockGames)).toEqual(23);
+  });
+  it("for each color in each game, it should return the lowest number of cubes", () => {
+    expect(lowestCubesPossibility(mockGames[1], "red")).toEqual(2);
+  });
+  it("should do it for every colors and return the multiplication of the lowest numbers", () => {
+    expect(gameMultiplicationOfLowestPossibilities(mockGames[0])).toEqual(429);
+  });
+  it("should return the sum of the multiplication of the lowest numbers for every games", () => {
+    expect(resultOfLowestAllGames(mockGames)).toEqual(597);
   });
 });

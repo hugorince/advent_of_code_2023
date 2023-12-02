@@ -99,10 +99,6 @@ export const calculateSum = (array: string[]) => {
 };
 
 const array = turnIntoArray(input);
-console.log(array);
 const arrayWithoutDigitsInLetters = turnArrayIntoDigitsWithoutLetters(array);
-console.log(arrayWithoutDigitsInLetters);
 const finalArray = arrayOfDoubleDigits(arrayWithoutDigitsInLetters);
-console.log(finalArray);
 const result = calculateSum(finalArray);
-console.log(result);

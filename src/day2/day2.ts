@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-
 const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf8");
+
 const input_test = fs.readFileSync(
   path.join(__dirname, "input_test.txt"),
   "utf8"

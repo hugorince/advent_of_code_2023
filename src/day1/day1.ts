@@ -3,7 +3,7 @@ const path = require("path");
 
 const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf8");
 
-export const turnIntoArray = (input: any) => {
+export const turnIntoArray = (input: string) => {
   return input.split("\n");
 };
 

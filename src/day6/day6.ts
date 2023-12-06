@@ -33,3 +33,25 @@ export const calculateAllPossibilities = (array: typeof races) => {
   array.map((obj) => result.push(possibilities(obj)));
   return result.reduce((a, b) => a * b, 1);
 };
+
+export const concatenateInput = (array: typeof races) => {
+  let time = "";
+  let distance = "";
+
+  array.map((race) => {
+    time += race.time.toString();
+    distance += race.distance.toString();
+  });
+
+  return {
+    time: parseInt(time),
+    distance: parseInt(distance),
+  };
+};
+
+export const calculateUltimatePossibilities = (array: typeof races) => {
+  const obj = concatenateInput(array);
+  return possibilities(obj);
+};
+
+console.log(calculateUltimatePossibilities(races));

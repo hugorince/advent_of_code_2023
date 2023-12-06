@@ -23,14 +23,14 @@ const games_test = input_test.split("\n").map((line: string) => {
   return { gameNumber: parseInt(gameNumber.split(" ")[1]), rounds };
 });
 
-interface Game {
+type Game = {
   gameNumber: number;
   rounds: string[];
-}
+};
 
 export const cubesPossibility = (game: Game, color: string, amount: number) => {
   let result = true;
-  game.rounds.map((round: string) => {
+  game.rounds.map((round: Game["rounds"][number]) => {
     if (round.includes(color)) {
       const turn = round.split(", ");
       turn.map((cube: string) => {

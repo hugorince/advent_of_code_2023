@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const input = fs.readFileSync(path.join(__dirname, "input.txt"), "utf8");
 
-export const cleanData = (input: any) => {
+export const cleanData = (input: string) => {
   const lines: string[] = input.trim().split("\n");
   const resultArray: { [key: string]: number[][] }[] = [];
 

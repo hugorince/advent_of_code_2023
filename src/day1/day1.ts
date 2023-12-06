@@ -11,27 +11,33 @@ export const turnStringIntoArray = (input: string) => {
   return input.split("");
 };
 
-export const removeNonNumbersOfArray = (array: string[]) => {
+type turnStringIntoArrayType = ReturnType<typeof turnStringIntoArray>;
+
+export const removeNonNumbersOfArray = (array: turnStringIntoArrayType) => {
   const pattern = /\d/;
   return array.filter((string) => {
     return string.match(pattern);
   });
 };
 
-export const joinFirstAndLastDigitOfArray = (array: string[]) => {
+export const joinFirstAndLastDigitOfArray = (
+  array: turnStringIntoArrayType
+) => {
   if (array.length === 1) return array[0] + array[0];
   return array[0] + array[array.length - 1];
 };
 
-export const arrayOfDoubleDigits = (array: string[]) => {
-  return array.map((string: string) => {
+export const arrayOfDoubleDigits = (array: turnStringIntoArrayType) => {
+  return array.map((string: turnStringIntoArrayType[number]) => {
     const array = turnStringIntoArray(string);
     const arrayWithoutNonNumbers = removeNonNumbersOfArray(array);
     return joinFirstAndLastDigitOfArray(arrayWithoutNonNumbers);
   });
 };
 
-export const checkIfDigitsInLetters = (string: string) => {
+export const checkIfDigitsInLetters = (
+  string: turnStringIntoArrayType[number]
+) => {
   let result = false;
   const digits = [
     "one",
@@ -50,7 +56,9 @@ export const checkIfDigitsInLetters = (string: string) => {
   return result;
 };
 
-export const replaceDigitsInLetters = (string: string): string => {
+export const replaceDigitsInLetters = (
+  string: turnStringIntoArrayType[number]
+) => {
   const digits = {
     zero: "0",
     one: "1",
@@ -81,8 +89,10 @@ export const replaceDigitsInLetters = (string: string): string => {
   return string;
 };
 
-export const turnArrayIntoDigitsWithoutLetters = (array: string[]) => {
-  return array.map((string) => {
+export const turnArrayIntoDigitsWithoutLetters = (
+  array: turnStringIntoArrayType
+) => {
+  return array.map((string: turnStringIntoArrayType[number]) => {
     if (checkIfDigitsInLetters(string)) {
       return replaceDigitsInLetters(string);
     }
@@ -90,9 +100,9 @@ export const turnArrayIntoDigitsWithoutLetters = (array: string[]) => {
   });
 };
 
-export const calculateSum = (array: string[]) => {
+export const calculateSum = (array: turnStringIntoArrayType) => {
   let total = 0;
-  array.forEach((string) => {
+  array.forEach((string: turnStringIntoArrayType[number]) => {
     total += parseInt(string);
   });
   return total;
